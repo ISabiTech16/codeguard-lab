@@ -8,6 +8,8 @@ public class InvoiceService {
     }
 
     public String line(Order order) {
-        return order.id() + ": " + String.format("%.2f", prices.total(order.unitPrice(), order.quantity()));
+        double net = prices.total(order.unitPrice(), order.quantity());
+        double withTax = net * (1 + taxRate);
+        return order.id() + ": " + String.format("%.2f", withTax);
     }
 }
