@@ -8,6 +8,6 @@ public class InvoiceService {
     }
 
     public String line(Order order) {
-        return order.id() + ": " + String.format("%.2f", prices.total(order.unitPrice(), order.quantity()));
+        return order.id() + " - " + String.format("%.2f", prices.total(order.unitPrice(), order.quantity()));
     }
 }
