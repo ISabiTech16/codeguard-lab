@@ -22,4 +22,10 @@ class PriceServiceTest {
     void rejectsNonPositiveQuantity() {
         assertThrows(IllegalArgumentException.class, () -> service.total(10.0, 0));
     }
+
+    @Test
+    void discountRateIsZeroAtTheThresholdAndTenPercentAbove() {
+        assertEquals(0.0, service.discountRate(10), 0.0);
+        assertEquals(0.10, service.discountRate(11), 0.0);
+    }
 }
